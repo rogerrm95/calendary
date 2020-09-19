@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+}
+
+#app {
+    background-color: rgb(92, 179, 179);
+    height: 100vh;
+}
+
+.card {
+    box-shadow: 1px 2px 5px rgb(0, 0, 0) !important;
+    background-color: rgb(135, 236, 181) !important;
+}
+
+#calendar {
+    background-color: white;
+}
+
+tbody td:hover {
+    background-color: rgb(119, 180, 250);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Botões - Estilo Global */
+
+.buttons {
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 10vh;
+    height: 5vh;
+
+    border: 2px solid white;
+    background-color: #089b93;
+    color: white;
+    font-weight: bold;
+}
+
+.buttons:focus,
+.buttons:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.buttons:hover{
+    border: 2px solid #089b93;
+    background-color: white;
+    color: #089b93;
+    font-weight: bold;
+}

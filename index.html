@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/popup.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Calendario</title>
+</head>
+
+<body id='app'>
+
+    <div class="container col-xm-4 col-lg-8 mt-5">
+
+        <div class="card">
+
+            <h3 class="card-header" id='month-year'></h3>
+
+            <!-- Calendario (Tabela) -->
+            <table class="table table-bordered table-responsive-sm" id='calendar'>
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                        <th>Sab</th>
+                    </tr>
+                </thead>
+
+                <tbody id='days'></tbody>
+            </table>
+
+            <div class="form-inline  d-flex justify-content-center" id="buttons">
+                <button class="col-sm-2 mr-3 buttons" id="back" onclick="back()">
+                    Anterior
+                </button>
+
+                <button class="col-sm-2 buttons" id="next" onclick="next()">
+                    Próximo
+                </button>
+            </div>
+
+            <form class="form-inline my-4 mx-4 d-flex justify-content-start" id='selects'>
+                <label class="lead mr-2 ml-2" for="month">Data: </label>
+                <select class="form-control col-sm-2" id='month' name="month" onchange="dateAt()">
+                    <option value=0>Jan</option>
+                    <option value=1>Fev</option>
+                    <option value=2>Mar</option>
+                    <option value=3>Abr</option>
+                    <option value=4>Mai</option>
+                    <option value=5>Jun</option>
+                    <option value=6>Jul</option>
+                    <option value=7>Ago</option>
+                    <option value=8>Set</option>
+                    <option value=9>Out</option>
+                    <option value=10>Nov</option>
+                    <option value=11>Dez</option>
+                </select>
+
+                <label class="ml-2" for="year"></label>
+                <select class="form-control col-sm-2" id='year' name="year" onchange="dateAt()">
+                    <option value=1990>1990</option>
+                    <option value=1991>1991</option>
+                    <option value=1992>1992</option>
+                    <option value=1993>1993</option>
+                    <option value=1994>1994</option>
+                    <option value=1995>1995</option>
+                    <option value=1996>1996</option>
+                    <option value=1997>1997</option>
+                    <option value=1998>1998</option>
+                    <option value=1999>1999</option>
+                    <option value=2000>2000</option>
+                    <option value=2001>2001</option>
+                    <option value=2002>2002</option>
+                    <option value=2003>2003</option>
+                    <option value=2004>2004</option>
+                    <option value=2005>2005</option>
+                    <option value=2006>2006</option>
+                    <option value=2007>2007</option>
+                    <option value=2008>2008</option>
+                    <option value=2009>2009</option>
+                    <option value=2010>2010</option>
+                    <option value=2011>2011</option>
+                    <option value=2012>2012</option>
+                    <option value=2013>2013</option>
+                    <option value=2014>2014</option>
+                    <option value=2015>2015</option>
+                    <option value=2016>2016</option>
+                    <option value=2017>2017</option>
+                    <option value=2018>2018</option>
+                    <option value=2019>2019</option>
+                    <option value=2020 selected>2020</option>
+                    <option value=2021>2021</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <!-- POP-UP - Eventos -->
+
+    <div id="pop-up">
+        <div id="todo">
+
+            <button id='exit' onclick='closePopUp()'>X</button>
+
+            <div id="first-header" class="card mb-3">
+                <h3 id="date"></h3>
+            </div>
+
+            <div id='form-events'>
+                <input type="hidden" name="event-id" id="id">
+                <input type="text" name="event-name" id="name" placeholder="Nome" maxlength="28">
+                <input type="text" name="event-local" id="local" placeholder="Localização" maxlength="40">
+                <input type="text" name="event-name" id="note" placeholder="Descrição" maxlength="35">
+
+                <div class="btn-group d-flex justify-content-center mt-3">
+                    <button id='save' class="m-2 buttons" onclick="saveEvent()">Salvar</button>
+                    <button id='change' class="m-2 buttons" onclick="updateEvent()">Alterar</button>
+                    <button id='clear' class="m-2 buttons" onclick="clearInputs()">Cancelar</button>
+                </div>
+            </div>
+
+            <div id="event-list-container" class="mt-4">
+                
+                <div id="second-header">
+                    <h4>Eventos Cadastrados:</h4>
+                </div>
+
+                <div id="event-list"></div>
+
+                <div id="event-details">
+                    <h4 id='event-name'></h4>
+                    <p>Data:<span id='event-date'></span></p>
+                    <p>Local:<span id='event-local'></span></p>
+                    <p>Descrição: <span id='event-note'></span></p>
+                    <div id="event-actions">
+                        <button id="edit" class="buttons" onclick="editEvent()" disabled>
+                            Editar
+                        </button>
+                        <button id="delete" class="buttons" onclick="deleteEvent()" disabled>
+                            Excluir
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

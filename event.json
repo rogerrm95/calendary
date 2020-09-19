@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "name": "Feriado - Dia do Trabalhador",
+      "date": "01/05/2020",
+      "local": "Em Casa",
+      "note": "",
+      "id": 2
+    },
+    {
+      "name": "Realizar o Backup do APP",
+      "date": "01/05/2020",
+      "local": "Em casa às 19h30",
+      "note": "BackUp Semanal",
+      "id": 3
+    },
+    {
+      "name": "Reunião grupo TCC",
+      "date": "02/05/2020",
+      "local": "Em casa",
+      "note": "A partir das 18h30",
+      "id": 4
+    }
+  ]
+}
